@@ -1,0 +1,341 @@
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    border: 1px solid #000;
+    height: 200px;
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+.btn {
+    background-image: linear-gradient(135deg, #008aff, #86d472);
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #ffffff;
+    /*   display: block;*/
+    height: 50px;
+    font-size: 1.4em;
+    font-weight: 600;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
+    flex-direction: row;
+}
+
+    .btn:hover {
+        color: #fff;
+    }
+
+    .btn .btn1 {
+        align-items: center;
+        background: #0e0e10;
+        border-radius: 6px;
+        /* display: flex;*/
+        justify-content: center;
+        height: 100%;
+        transition: background 0.5s ease;
+        width: 100%;
+    }
+
+    .btn:hover .btn1 {
+        background: transparent;
+    }
+
+    .btn:hover {
+        color: #fff;
+    }
+
+    .btn .btn1 {
+        align-items: center;
+        background: #0e0e10;
+        border-radius: 6px;
+        /*display: flex;*/
+        justify-content: center;
+        height: 100%;
+        transition: background 0.5s ease;
+        width: 100%;
+    }
+
+    .btn:hover .btn1 {
+        background: transparent;
+    }
+.menu {
+    height: 50px;
+    width: 100%;
+    background: #42a6ff;
+}
+
+ul.listmenu {
+    padding: 0;
+    width: 60%;
+    list-style: none;
+    margin: 0 auto;
+    line-height: 27px;
+    font-size: 25px;
+}
+
+    ul.listmenu li {
+        float: left;
+        margin: 7px;
+        padding: 5px;
+    }
+
+        ul.listmenu li:hover {
+            background: cornsilk;
+        }
+
+        ul.listmenu li a {
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+        }
+
+ul.listaccount {
+    padding: 0;
+    width: 70%;
+    list-style: none;
+    margin: 0 auto;
+    line-height: 27px;
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+    ul.listaccount li {
+        float: right;
+        margin: 7px;
+        padding: 5px;
+    }
+
+        ul.listaccount li:hover {
+            background: cornsilk;
+        }
+
+        ul.listaccount li a {
+            text-decoration: none;
+            text-align: center;
+            color: #fff;
+        }
+
+#main {
+    border: 1px solid;
+    height: 800px;
+    width: 100%;
+}
+
+#boxname {
+    border: 1px solid #57ff52;
+    height: auto;
+    width: 100%;
+    background: aquamarine;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#chatdisplay {
+    height: 690px;
+    width: 99%;
+    margin: 5px 5px;
+}
+
+#displaychat {
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-top-left-radius: 5%;
+    width: max-content;
+    height: auto;
+    margin-left: 5px;
+}
+
+#txtdisplay {
+    height: 690px;
+    width: 99%;
+    overflow-y: scroll;
+}
+
+#chatarea {
+    height: 45px;
+    width: 99%;
+    margin: 5px 5px;
+}
+
+#txtchat {
+    height: 75%;
+    width: 85%;
+    margin: 5px 5px;
+}
+
+#btnsend {
+    margin: 5px 5px;
+    background-color: Highlight;
+}
+
+.result_bet {
+    border: 1px solid #9e8f73;
+    height: 790px;
+    width: 43%;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+}
+
+.result {
+    border: 1px solid #9e8f73;
+    height: 360px;
+    width: 98%;
+    margin-left: 5px;
+    float: left;
+}
+#resultname {
+    text-align: center;
+    border: 1px solid #57ff52;
+    height: auto;
+    width: 100%;
+    background: aquamarine;
+    font-size: xx-large;
+}
+
+.bet {
+    height: 410px;
+    width: 98%;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+}
+#betname {
+    text-align: center;
+    border: 1px solid #57ff52;
+    height: auto;
+    width: 100%;
+    background: aquamarine;
+    font-size: xx-large;
+}
+
+.boxchat {
+    border: 1px solid #d92ba8;
+    height: 790px;
+    width: 55%;
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.bethistory {
+    border: 1px solid #1a4059;
+    height: 500px;
+    width: 100%;
+}
+#historyname {
+    text-align: center;
+    border: 1px solid #57ff52;
+    height: auto;
+    width: 100%;
+    background: aquamarine;
+    font-size: xx-large;
+}
+.rank {
+    border: 1px solid #57ff52;
+    height: 500px;
+    width: 100%;
+}
+#rankname {
+    text-align: center;
+    border: 1px solid #57ff52;
+    height: auto;
+    width: 100%;
+    background: aquamarine;
+    font-size: xx-large;
+}
+.footer {
+    border: 1px solid #1a4059;
+    height: 150px;
+    width: 100%;
+    background: #669999;
+}
+
+.clear {
+    clear: both;
+}
+
+.wrapper1{
+    text-align: center;
+}
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    font-size:xx-large;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+    .glow-on-hover:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+    }
+
+    .glow-on-hover:active {
+        color: #000
+    }
+
+        .glow-on-hover:active:after {
+            background: transparent;
+        }
+
+    .glow-on-hover:hover:before {
+        opacity: 1;
+    }
+
+    .glow-on-hover:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #111;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+    }
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}

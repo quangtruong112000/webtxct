@@ -1,0 +1,221 @@
+﻿@model  List<webtx.EF.boxchat>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Css/style.css" rel="stylesheet" />
+    <title>web game</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#txtdisplay').scrollTop($('#txtdisplay')[0].scrollHeight);
+            loadmess();
+            var tinnhan = $.connection.chat;
+
+            $.connection.hub.start().done(function () {
+                console.log("ket noi thanh cong");
+            });
+            $('#btnsend').click(function () {
+                var nn = 1; //iduser
+                var tn = $("#txtchat").val();
+                if (tn.length > 0) {
+                    $.ajax({
+                        url: '/Home/Add', type: 'post',
+                        data: {
+                            iduser: nn,
+                            noidung: tn,
+                            status: '1'
+                        }
+                    });
+
+                    tinnhan.server.chats(tn, 'truong'); // user dang nhap
+
+                }
+                var tn = $("#txtchat").val("");
+                $('#txtdisplay').scrollTop($('#txtdisplay')[0].scrollHeight);
+            });
+
+            $("#btnloadanh").change(function () {
+                var  file = this.files[0]
+                var img = new Image();
+                
+                img.onload = function () {
+                    uploadImage(file);
+                };
+                
+                
+            });
+
+              
+            });
+
+        function uploadImage(file) {
+            var formData = new FormData();
+            formData.append("file", file);
+            $.ajax({
+                data: formData,
+                type: "POST",
+                url: '/Home/sendimage',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (FileUrl) {
+                    var tinnhan = $.connection.chat;
+                    tinnhan.server.chats("<img src=" + FileUrl + " height='100' width='180' style='border-radius:10px;' id='hinhanh' />", 'truong');
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+        }
+
+        function loadmess() {
+            var tinnhan = $.connection.chat;
+            tinnhan.client.chat = function (nguoigui, noidung) {
+                if (nguoigui == 'truong') {
+                    //css nguoi gui
+                    $('#tnsau').before("<div style='background-color:lightblue; border-top-right-radius: 5%; border-bottom-right-radius: 5%; border-bottom-left-radius: 5%; border-top-left-radius: 5%; width: max-content; height: auto; margin-left: 5px;'>" +
+                        "<h6>" + nguoigui + "</h6>" +
+                        "<h5>" + noidung + "</h5></div>"
+                    );
+                    $('#txtdisplay').scrollTop($('#txtdisplay')[0].scrollHeight);
+                }
+                else {
+                    $('#tnsau').before("<div style='background-color:lightblue; border-top-right-radius: 5%; border-bottom-right-radius: 5%; border-bottom-left-radius: 5%; border-top-left-radius: 5%; width: max-content; height: auto; margin-left: 5px;'>" +
+                        "<h6>" + nguoigui + "</h6>" +
+                        "<h5>" + noidung + "</h5> </div>"
+                    );
+                    $('#txtdisplay').scrollTop($('#txtdisplay')[0].scrollHeight);
+                }               
+            }
+
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="menu">
+            <ul class="listmenu">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Mua bạc</a></li>
+                <li><a href="#">Nạp bạc</a></li>
+                <li><a href="#">Rút bạc</a></li>
+            </ul>
+            <ul class="listaccount">
+                <li><a href="/User/Login">Đăng nhập</a></li>
+                <li><a href="/User/Register">Đăng kí</a></li>
+            </ul>
+        </div>
+        <div class="header">
+            <h2>HỆ THỐNG CHẴN LẺ TÀI XỈU</h2>
+            <h4>UY TÍN VÀ AN TOÀN</h4>
+            <div>
+                <button>Chức năng</button>
+                <button id="btnguide">Xem hướng dẫn</button>
+                <button id="btngroupf">Group Facebook</button>
+            </div>
+            <br />
+            <div>
+                <a class="btn" href="#"><span class="btn1">Làng Lá 1</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Lá 2</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Cát</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Sương Mù</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Kha Cô Tếch</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Mây 2</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Raikage</span></a>
+                <a class="btn" href="#"><span class="btn1">Làng Killer Bee</span></a>
+                <a class="btn" href="#"><span class="btn1">Vietlott</span></a>
+
+            </div>
+        </div>
+        <div id="main">
+            <div class="result_bet">
+                <div class="result">
+                    <div id="resultname">
+                        KẾT QUẢ
+                    </div>
+                    <div id="betresult">
+                        Kết quả đặt cược
+                    </div>
+                </div>
+                <div class="bet">
+                    <div id="betname">ĐẶT CƯỢC</div>
+                    <br />
+                    <div id="betdisplay">
+                        <div>Bạc hiện có:</div>
+                        <br />
+                        <div>Loại cược:</div>
+                        <br />
+                        <div>Kết quả dự đoán:</div>
+                        <br />
+                        <div class="wrapper1">
+                            <button class="glow-on-hover" type="button" id="btnchan">CHẴN</button>
+                            <button class="glow-on-hover" type="button" id="btnle">LẺ</button>
+                        </div>
+                        <br />
+                        <div class="wrapper1">
+                            <button class="glow-on-hover" type="button" id="btntai">TÀI</button>
+                            <button class="glow-on-hover" type="button" id="btnxiu">XỈU</button>
+                        </div>
+                        <br />
+                        <div><textarea placeholder="Nhập số tiền cược" id="txttiencuoc" style="width:99%"></textarea></div>
+                        <br />
+                        <div><button class="glow-on-hover" type="button" id="btntai" style="width:100%">ĐẶT NGAY</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="boxchat">
+                <div id="boxname">BOX CHAT</div>
+                <div id="chatdisplay">
+                    <div id="txtdisplay">
+                        @{
+                            foreach (var item in Model.ToList())
+                            {
+                                <div style="background-color:lightblue" id="displaychat">
+                                    <div id="avatar_name">
+                                        <img src="@item.user.avatar" />@item.user.name
+                                    </div>
+                                    <h5>@item.noidung</h5>
+                                </div>
+                            }
+
+                        }
+                        <div id="tnsau" style="display:none"></div>
+                    </div>
+                </div>
+                <div id="chatarea">
+                    <input type="file" style="display:none" id="btnloadanh"/><label for="btnloadanh">ảnh</label>
+                    <input id="txtchat" type="text" placeholder="Nhập nội dung chat" />
+                    <a class="btn" id="btnsend"><span class="btn1" style="font-size:large">Gửi</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="bethistory">
+            <div id="historyname">LỊCH SỬ ĐẶT CƯỢC</div>
+            <div id="historydisplay">lịch sử</div>
+        </div>
+        <div class="rank">
+            <div id="rankname">BẢNG XẾP HẠNG TRONG NGÀY</div>
+            <div id="listrank">ranking</div>
+        </div>
+        <div class="footer">
+            <p>
+                <h1>Hệ thống chẵn lẻ tài xỉu con số may mắn game Làng Lá</h1>
+                <h3>Chăm sóc khách hàng 24/24</h3>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
